@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+  <form class="form" method="POST" action="{% url 'delete' pk=item.id %}">
+    {% csrf_token %}
+    <div class="col">
+      <p>Are you sure you want to delete this task?</p>
+    </div>
+
+    <div class="col">
+      <button type="submit" class="btn btn-primary mb-2">Confirm</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

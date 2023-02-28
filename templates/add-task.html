@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-10 col-md-8 col-lg-8">
+      <div class="row mt-4">
+        <div class="col">
+          <div class="badge bg-primary text-wrap" style="width: 12rem">
+            <h2>Add Item</h2>
+          </div>
+          <form class="form-inline" action="" method="POST">
+            {% csrf_token %}
+            <input
+              name="task"
+              type="text"
+              class="form-control mt-4 mb-2 mr-sm-2"
+              placeholder="Type item here..."
+            />
+            <button type="submit" class="btn btn-primary mb-2">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

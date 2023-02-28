@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-10 col-md-8 col-lg-4">
+      <div class="badge bg-primary text-wrap mt-4" style="width: 12rem">
+        <h3 style="color: aliceblue">Register</h3>
+      </div>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password1" />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Confirm Password</label
+          >
+          <input type="password" class="form-control" name="password2" />
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+      <p>Already have an account?</p>
+      <div class="btn btn-sm btn-primary float-right">
+        <a href="{% url 'login' %}"><h5 style="color: aliceblue">Login</h5></a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

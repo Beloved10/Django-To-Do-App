@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="row mb-4 mt-4">
+    <div class="mx-auto col-10 col-md-8 col-lg-8">
+      <div class="col">
+        <div class="badge bg-primary text-wrap" style="width: 12rem">
+          <a href="{% url 'create' %}"
+            ><h3 style="color: aliceblue">Add Item</h3></a
+          >
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col mt-4">
+          <ul class="list-group">
+            {% for item in todo %}
+            <li class="list-group-item">
+              <h5>Task: {{item.title}}</h5>
+              <p>Created: {{item.date|date}}</p>
+              <form action="{% url 'delete' pk=item.id %}" method="POST">
+                <button type="submit" class="btn btn-sm btn-danger float-end">
+                  Delete
+                </button>
+              </form>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
