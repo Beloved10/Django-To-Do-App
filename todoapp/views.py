@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib import auth
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
 
 
 def home(request):
