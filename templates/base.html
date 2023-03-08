@@ -17,31 +17,44 @@
     ></script>
   </head>
   <body>
+    <!-- Navbar -->
     <nav class="navbar bg-primary mr-sm-2" data-bs-theme="dark">
-      <h2>
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Navbar brand -->
         <a class="navbar-brand mb-2 p-2" href="{% url 'home' %}"
           >My To Do App</a
         >
-      </h2>
-      {% for message in messages %}
-      <div class="alert alert-{{ message.tags }} " id="msg" role="alert">
-        {{ message }}
-      </div>
-      {% endfor %} {% if user.is_authenticated %}
-      <div>
-        <div class="navbar-brand mb-sm-2 p-2 float-right">
-          <h6>@{{user.username}}</h6>
-          <a style="color: aliceblue" href="{% url 'logout' %}"
-            ><h5>Logout</h5>
-          </a>
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} " id="msg" role="alert">
+          {{ message }}
         </div>
+        {% endfor %}
+        <!-- Example single danger button -->
+        <div class="btn-group">
+          {% if request.user.is_authenticated %}
+          <button
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <h6>@{{user.username}}</h6>
+          </button>
+
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+            </li>
+          </ul>
+        </div>
+
+        {% endif %}
       </div>
-      {% else %}
-      <div class="navbar-brand mb-sm-2 p-2 float-right">
-        <a style="color: aliceblue" href="{% url 'login' %}">Login</a>
-      </div>
-      {% endif %}
+      <!-- Container wrapper -->
     </nav>
-    <div class="container">{% block content %} {% endblock %}</div>
+    <!-- Navbar -->
+
+    {% block content %} {% endblock %}
   </body>
 </html>

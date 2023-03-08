@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import Todo
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib import auth
 from django.contrib.auth.models import User
 
-
+@login_required(login_url='login')
 def home(request):
     todo = Todo.objects.filter(created_by=request.user)[0:5]
     context={'todo':todo}
